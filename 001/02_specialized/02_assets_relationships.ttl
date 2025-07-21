@@ -14,5 +14,18 @@ owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main
 ### Specialized Relationships ###
 ##################################################
 ### Relacionamentos entre Classes ###
-assets:Pump rel:connectsTo assets:Pipe .
-assets:Pipe rel:connectsTo assets:Tank .
+assets:Pump a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty rel:connectsTo ;
+        owl:allValuesFrom assets:Pipe ; # all pumps must be connected to a pipe
+        owl:cardinality 1 
+    ] .
+
+assets:Pipe a owl:Class ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty rel:connectsTo ;
+        owl:allValuesFrom assets:Tank ; # you should declare a list of all possible assets here (not only a tank)
+        owl:cardinality 1 
+    ] .
