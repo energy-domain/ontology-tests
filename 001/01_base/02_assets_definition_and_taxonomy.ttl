@@ -56,5 +56,6 @@
     dcterms:identifier "asset_pipe" ;
     skos:prefLabel "Pipe"@en ;
     skos:altLabel "Pipeline"@en ;
+    skos:altLabel "Tubulação"@pt-br ;
     skos:definition "Cylindrical conduit that transports fluids between system components."@en ;
     :ifc_equivalentClass "IfcPipeSegment" .
