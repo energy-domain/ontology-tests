@@ -7,8 +7,8 @@
 ##################################################
 ### Base Ontologies Imports ###
 ##################################################
-owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl> .
-owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/03_relationships_definition.ttl> .
+<> owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl> .
+<> owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/03_relationships_definition.ttl> .
 
 ##################################################
 ### Specialized Relationships ###
