@@ -7,7 +7,7 @@
 ##################################################
 ### Base ontologies imports ###
 ##################################################
-#<> owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/01_attributes_definition.ttl> .
+#<> owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/> .
 
 ##################################################
 ### Assets Specialized Attributes ###
