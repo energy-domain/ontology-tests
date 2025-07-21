@@ -1,5 +1,5 @@
 @base <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
-@prefix : <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
+@prefix : <> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix assets: <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl> .
@@ -8,8 +8,8 @@
 ##################################################
 ### Base ontologies imports ###
 ##################################################
-owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/01_attributes_definition.ttl> .
-owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl> .
+<> owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/01_attributes_definition.ttl> .
+<> owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl> .
 
 ##################################################
 ### Assets Specialized Attributes ###
