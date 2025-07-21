@@ -1,1 +1,16 @@
+@base <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/> .
+@prefix : <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
+##################################################
+### Relationships ###
+##################################################
+:relationship a owl:ObjectProperty ;
+    rdfs:label "relationship"@en .
+
+:connectsTo a owl:ObjectProperty ;
+    rdfs:subPropertyOf :relationship ;
+    rdfs:label "connects to"@en ;
+    :ifc_equivalentClass "IfcRelConnectsElements" ;
+    :ifc_customRelationship "FLOW_CONNECTION" .
