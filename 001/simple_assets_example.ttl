@@ -1,8 +1,8 @@
 @base <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/> .
+@prefix : <> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 
-owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/01_assets_attributes.ttl> .
-owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/02_assets_relationships.ttl> .
+<> owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
 
 ### Ontology metadata ###
 :simple_assets_example a owl:Ontology ;
