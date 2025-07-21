@@ -1,8 +1,8 @@
 @base <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
 @prefix : <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix assets: <http://example.org/ontology/modules/assets#> .
-@prefix rel: <http://example.org/ontology/modules/relationships#> .
+@prefix assets: <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl> .
+@prefix rel: <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/03_relationships_definition.ttl> .
 
 ##################################################
 ### Base Ontologies Imports ###
