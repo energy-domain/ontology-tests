@@ -1,1 +1,50 @@
+@base <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
+@prefix : <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix assets: <http://example.org/ontology/modules/assets#> .
+@prefix attributes: <http://example.org/ontology/modules/attributes#> .
 
+##################################################
+### Base ontologies imports ###
+##################################################
+owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/01_attributes_definition.ttl> .
+owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl> .
+
+##################################################
+### Assets Specialized Attributes ###
+##################################################
+assets:Equipment owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        [ a owl:Restriction ;
+          owl:onProperty attributes:hasAttribute ;
+          owl:someValuesFrom attributes:SerialNumber ;
+          owl:cardinality 1 ]
+        [ a owl:Restriction ;
+          owl:onProperty attributes:hasAttribute ;
+          owl:someValuesFrom attributes:MaintenanceHistory ;
+          owl:minCardinality 1 ]
+    )
+] .
+
+assets:Pump owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf (
+        [ a owl:Restriction ;
+          owl:onProperty attributes:hasAttribute ;
+          owl:someValuesFrom attributes:Pressure ;
+          owl:cardinality 1 ]
+        [ a owl:Restriction ;
+          owl:onProperty attributes:hasAttribute ;
+          owl:someValuesFrom attributes:Temperature ;
+          owl:cardinality 1 ]
+    )
+] .
+
+assets:Tank owl:equivalentClass [
+    a owl:Restriction ;
+    owl:onProperty attributes:hasAttribute ;
+    owl:someValuesFrom attributes:Volume ;
+    owl:cardinality 1 
+] .
