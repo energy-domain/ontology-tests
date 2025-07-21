@@ -1,7 +1,8 @@
-@base <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
+@base <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/02_assets_relationships.ttl#> .
 @prefix : <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix energyBase: <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/> .
+@prefix relationships: <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/03_relationships_definition.ttl#> .
+@prefix assets: <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl#> .
 
 ##################################################
 ### Base Ontologies Imports ###
@@ -12,18 +13,18 @@
 ### Specialized Relationships ###
 ##################################################
 ### Relacionamentos entre Classes ###
-energyBase:Pump a owl:Class ;
+assets:Pump a owl:Class ;
     owl:equivalentClass [
         a owl:Restriction ;
-        owl:onProperty energyBase:connectsTo ;
-        owl:allValuesFrom energyBase:Pipe ; # all pumps must be connected to a pipe
+        owl:onProperty relationships:connectsTo ;
+        owl:allValuesFrom assets:Pipe ; # all pumps must be connected to a pipe
         owl:cardinality 1 
     ] .
 
-energyBase:Pipe a owl:Class ;
+assets:Pipe a owl:Class ;
     owl:equivalentClass [
         a owl:Restriction ;
-        owl:onProperty energyBase:connectsTo ;
-        owl:allValuesFrom energyBase:Tank ; # you should declare a list of all possible assets here (not only a tank)
+        owl:onProperty relationships:connectsTo ;
+        owl:allValuesFrom assets:Tank ; # you should declare a list of all possible assets here (not only a tank)
         owl:cardinality 1 
     ] .
