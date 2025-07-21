@@ -2,49 +2,47 @@
 @prefix : <> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix assets: <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl> .
-@prefix attributes: <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/01_attributes_definition.ttl> .
+@prefix energyBase: <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/> .
 
 ##################################################
 ### Base ontologies imports ###
 ##################################################
-<> owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/01_attributes_definition.ttl> .
-<> owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl> .
+#<> owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/01_attributes_definition.ttl> .
 
 ##################################################
 ### Assets Specialized Attributes ###
 ##################################################
-assets:Equipment owl:equivalentClass [
+energyBase:Equipment owl:equivalentClass [
     a owl:Class ;
     owl:intersectionOf (
         [ a owl:Restriction ;
-          owl:onProperty attributes:hasAttribute ;
-          owl:someValuesFrom attributes:SerialNumber ;
+          owl:onProperty energyBase:hasAttribute ;
+          owl:someValuesFrom energyBase:SerialNumber ;
           owl:cardinality 1 ]
         [ a owl:Restriction ;
-          owl:onProperty attributes:hasAttribute ;
-          owl:someValuesFrom attributes:MaintenanceHistory ;
+          owl:onProperty energyBase:hasAttribute ;
+          owl:someValuesFrom energyBase:MaintenanceHistory ;
           owl:minCardinality 1 ]
     )
 ] .
 
-assets:Pump owl:equivalentClass [
+energyBase:Pump owl:equivalentClass [
     a owl:Class ;
     owl:intersectionOf (
         [ a owl:Restriction ;
-          owl:onProperty attributes:hasAttribute ;
-          owl:someValuesFrom attributes:Pressure ;
+          owl:onProperty energyBase:hasAttribute ;
+          owl:someValuesFrom energyBase:Pressure ;
           owl:cardinality 1 ]
         [ a owl:Restriction ;
-          owl:onProperty attributes:hasAttribute ;
-          owl:someValuesFrom attributes:Temperature ;
+          owl:onProperty energyBase:hasAttribute ;
+          owl:someValuesFrom energyBase:Temperature ;
           owl:cardinality 1 ]
     )
 ] .
 
-assets:Tank owl:equivalentClass [
+energyBase:Tank owl:equivalentClass [
     a owl:Restriction ;
-    owl:onProperty attributes:hasAttribute ;
-    owl:someValuesFrom attributes:Volume ;
+    owl:onProperty energyBase:hasAttribute ;
+    owl:someValuesFrom energyBase:Volume ;
     owl:cardinality 1 
 ] .
