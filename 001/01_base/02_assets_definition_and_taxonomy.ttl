@@ -1,1 +1,60 @@
+@base <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/> .
+@prefix : <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+##################################################
+### Assets Taxonomy ###
+##################################################
+:Asset a owl:Class ;
+    rdfs:label "Asset"@en ;
+    rdfs:comment "Base class for all physical assets in the system."@en .
+
+:Equipment a owl:Class ;
+    rdfs:subClassOf :Asset ;
+    dcterms:identifier "asset_equipment" ;
+    skos:prefLabel "Equipment"@en ;
+    skos:altLabel "Physical Equipment"@en ;
+    skos:definition "Physical assets that perform specific operational functions in the system."@en ;
+    :ifc_equivalentClass "IfcEquipment" ;
+    :ifc_objectType "Equipment" ;
+    :ifc_predefinedType "USERDEFINED" .
+
+:TransportElement a owl:Class ;
+    rdfs:subClassOf :Asset ;
+    dcterms:identifier "asset_transport_element" ;
+    skos:prefLabel "Transport Element"@en ;
+    skos:altLabel "Transportation Component"@en ;
+    skos:definition "Elements that facilitate the movement of fluids/materials between equipment."@en ;
+    :ifc_equivalentClass "IfcDistributionFlowElement" ;
+    :ifc_objectType "TransportElement" ;
+    :ifc_predefinedType "USERDEFINED" .
+
+:Pump a owl:Class ;
+    rdfs:subClassOf :Equipment ;
+    dcterms:identifier "asset_pump" ;
+    skos:prefLabel "Pump"@en ;
+    skos:altLabel "Fluid Pump"@en ;
+    skos:definition "Mechanical device that moves fluids through pipes by mechanical action."@en ;
+    :ifc_equivalentClass "IfcPump" .
+
+:Tank a owl:Class ;
+    rdfs:subClassOf :Equipment ;
+    dcterms:identifier "asset_tank" ;
+    skos:prefLabel "Tank"@en ;
+    skos:altLabel "Storage Vessel"@en ;
+    skos:definition "Container for storing liquids or gases at atmospheric or pressurized conditions."@en ;
+    :ifc_equivalentClass "IfcTank" ;
+    :ifc_objectType "Tank" ;
+    :ifc_predefinedType "USERDEFINED" .
+
+:Pipe a owl:Class ;
+    rdfs:subClassOf :TransportElement ;
+    dcterms:identifier "asset_pipe" ;
+    skos:prefLabel "Pipe"@en ;
+    skos:altLabel "Pipeline"@en ;
+    skos:definition "Cylindrical conduit that transports fluids between system components."@en ;
+    :ifc_equivalentClass "IfcPipeSegment" .
