@@ -1,1 +1,18 @@
+@base <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
+@prefix : <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix assets: <http://example.org/ontology/modules/assets#> .
+@prefix rel: <http://example.org/ontology/modules/relationships#> .
 
+##################################################
+### Base Ontologies Imports ###
+##################################################
+owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/02_assets_definition_and_taxonomy.ttl> .
+owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/03_relationships_definition.ttl> .
+
+##################################################
+### Specialized Relationships ###
+##################################################
+### Relacionamentos entre Classes ###
+assets:Pump rel:connectsTo assets:Pipe .
+assets:Pipe rel:connectsTo assets:Tank .
