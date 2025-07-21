@@ -1,0 +1,12 @@
+@base <https://raw.githubusercontent.com/energy-domain/ontology/main/final.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/01_assets_attributes.ttl> .
+owl:imports <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/02_specialized/02_assets_relationships.ttl> .
+
+### Ontology metadata ###
+:simple_assets_example a owl:Ontology ;
+    rdfs:label "Simple Assets Example Ontology"@en ;
+    rdfs:comment "final ontology test."@en ;
+    dcterms:creator "Energy Domain" ;
+    dcterms:created "2025-07-21"^^xsd:date .
