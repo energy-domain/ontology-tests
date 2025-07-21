@@ -1,1 +1,95 @@
+@base <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/> .
+@prefix : <https://raw.githubusercontent.com/energy-domain/ontology-tests/main/001/01_base/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+##################################################
+### Attribute Classes ###
+##################################################
+:Attribute a owl:Class ;
+    rdfs:label "Attribute"@en ;
+    rdfs:comment "Base class for all attributes."@en .
+
+:Pressure a owl:Class ;
+    rdfs:subClassOf :Attribute ;
+    dcterms:identifier "attr_pressure" ;
+    skos:definition "Measurement of force applied per unit area, typically in Pascals (Pa)"@en ;
+    dcterms:accessRights "public" ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty :singleValue ;
+        owl:allValuesFrom xsd:float ;
+        owl:cardinality 1 
+    ] .
+
+:Temperature a owl:Class ;
+    rdfs:subClassOf :Attribute ;
+    dcterms:identifier "attr_temperature" ;
+    skos:definition "Measurement of thermal energy, typically in degrees Celsius (°C)"@en ;
+    dcterms:accessRights "public" ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty :singleValue ;
+        owl:allValuesFrom xsd:float ;
+        owl:cardinality 1 
+    ] .
+
+:Volume a owl:Class ;
+    rdfs:subClassOf :Attribute ;
+    dcterms:identifier "attr_volume" ;
+    skos:definition "Measurement of three-dimensional space occupied, typically in cubic meters (m³)"@en ;
+    dcterms:accessRights "public" ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty :singleValue ;
+        owl:allValuesFrom xsd:float ;
+        owl:cardinality 1 
+    ] .
+
+:SerialNumber a owl:Class ;
+    rdfs:subClassOf :Attribute ;
+    dcterms:identifier "attr_serialnumber" ;
+    skos:definition "Unique alphanumeric identifier assigned to equipment for tracking purposes"@en ;
+    dcterms:accessRights "restricted" ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty :singleValue ;
+        owl:allValuesFrom xsd:string ;
+        owl:cardinality 1 
+    ] .
+
+:MaintenanceHistory a owl:Class ;
+    rdfs:subClassOf :Attribute ;
+    dcterms:identifier "attr_maintenance" ;
+    skos:definition "Chronological record of all maintenance activities performed on an asset"@en ;
+    dcterms:accessRights "restricted" ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty :listValue ;
+        owl:allValuesFrom [
+            a rdfs:Datatype ;
+            owl:onDatatype xsd:date ;
+            owl:withMembers () 
+        ] ;
+        owl:minCardinality 1 
+    ] .
+
+##################################################
+### Auxiliar Properties ###
+##################################################
+:auxiliarObjectProperty a owl:ObjectProperty .
+
+:hasAttribute a owl:ObjectProperty ;
+    rdfs:subPropertyOf :auxiliarObjectProperty .
+
+:auxiliarDatatypeProperty a owl:DatatypeProperty .
+
+:singleValue a owl:DatatypeProperty ;
+    rdfs:subPropertyOf :auxiliarDatatypeProperty .
+
+:listValue a owl:DatatypeProperty ;
+    rdfs:subPropertyOf :auxiliarDatatypeProperty .
