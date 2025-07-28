@@ -9,53 +9,660 @@
 ##################################################
 ### Assets Taxonomy ###
 ##################################################
+
+# Base Class
 :Asset a owl:Class ;
     rdfs:label "Asset"@en ;
     rdfs:comment "Base class for all physical assets in the system."@en .
 
-:Equipment a owl:Class ;
+# CompactObject Branch
+:CompactObject a owl:Class ;
     rdfs:subClassOf :Asset ;
-    dcterms:identifier "asset_equipment" ;
-    skos:prefLabel "Equipment"@en ;
-    skos:altLabel "Physical Equipment"@en ;
-    skos:definition "Physical assets that perform specific operational functions in the system."@en ;
-    :ifc_equivalentClass "IfcEquipment" ;
-    :ifc_objectType "Equipment" ;
-    :ifc_predefinedType "USERDEFINED" .
+    rdfs:label "Compact Object"@en .
 
-:TransportElement a owl:Class ;
-    rdfs:subClassOf :Asset ;
-    dcterms:identifier "asset_transport_element" ;
-    skos:prefLabel "Transport Element"@en ;
-    skos:altLabel "Transportation Component"@en ;
-    skos:definition "Elements that facilitate the movement of fluids/materials between equipment."@en ;
-    :ifc_equivalentClass "IfcDistributionFlowElement" ;
-    :ifc_objectType "TransportElement" ;
-    :ifc_predefinedType "USERDEFINED" .
+:Accessory a owl:Class ;
+    rdfs:subClassOf :CompactObject ;
+    rdfs:label "Accessory"@en .
+
+:HubProtectionCap a owl:Class ;
+    rdfs:subClassOf :Accessory ;
+    rdfs:label "Hub Protection Cap"@en .
+
+:DeploymentAccessory a owl:Class ;
+    rdfs:subClassOf :Accessory ;
+    rdfs:label "Deployment Accessory"@en .
+
+:ROVTool a owl:Class ;
+    rdfs:subClassOf :Accessory ;
+    rdfs:label "ROV Tool"@en .
+
+:OverrideTool a owl:Class ;
+    rdfs:subClassOf :ROVTool ;
+    rdfs:label "Override Tool"@en .
+
+:StorageAccessory a owl:Class ;
+    rdfs:subClassOf :Accessory ;
+    rdfs:label "Storage Accessory"@en .
+
+:StorageSkid a owl:Class ;
+    rdfs:subClassOf :StorageAccessory ;
+    rdfs:label "Storage Skid"@en .
+
+:StorageSpool a owl:Class ;
+    rdfs:subClassOf :StorageAccessory ;
+    rdfs:label "Storage Spool"@en .
+
+:StorageBox a owl:Class ;
+    rdfs:subClassOf :StorageAccessory ;
+    rdfs:label "Storage Box"@en .
+
+:WearBushing a owl:Class ;
+    rdfs:subClassOf :Accessory ;
+    rdfs:label "Wear Bushing"@en .
+
+:Component a owl:Class ;
+    rdfs:subClassOf :CompactObject ;
+    rdfs:label "Component"@en .
+
+:HardwareItem a owl:Class ;
+    rdfs:subClassOf :Component ;
+    rdfs:label "Hardware Item"@en .
+
+:SacrificialAnode a owl:Class ;
+    rdfs:subClassOf :HardwareItem ;
+    rdfs:label "Sacrificial Anode"@en .
+
+:RingGasket a owl:Class ;
+    rdfs:subClassOf :HardwareItem ;
+    rdfs:label "Ring Gasket"@en .
+
+:MooringAccessory a owl:Class ;
+    rdfs:subClassOf :HardwareItem ;
+    rdfs:label "Mooring Accessory"@en .
+
+:Socket a owl:Class ;
+    rdfs:subClassOf :MooringAccessory ;
+    rdfs:label "Socket"@en .
+
+:Shackle a owl:Class ;
+    rdfs:subClassOf :MooringAccessory ;
+    rdfs:label "Shackle"@en .
+
+:Hook a owl:Class ;
+    rdfs:subClassOf :MooringAccessory ;
+    rdfs:label "Hook"@en .
+
+:TrianglePlate a owl:Class ;
+    rdfs:subClassOf :MooringAccessory ;
+    rdfs:label "Triangle Plate"@en .
+
+:RiserSupport a owl:Class ;
+    rdfs:subClassOf :Component ;
+    rdfs:label "Riser Support"@en .
+
+:ITube a owl:Class ;
+    rdfs:subClassOf :RiserSupport ;
+    rdfs:label "I-Tube"@en .
+
+:OpenReceptacle a owl:Class ;
+    rdfs:subClassOf :RiserSupport ;
+    rdfs:label "Open Receptacle"@en .
+
+:ComponentDevice a owl:Class ;
+    rdfs:subClassOf :Component ;
+    rdfs:label "Component Device"@en .
+
+:PressureComponent a owl:Class ;
+    rdfs:subClassOf :ComponentDevice ;
+    rdfs:label "Pressure Component"@en .
+
+:FlowConnector a owl:Class ;
+    rdfs:subClassOf :PressureComponent ;
+    rdfs:label "Flow Connector"@en .
+
+:Hub a owl:Class ;
+    rdfs:subClassOf :PressureComponent ;
+    rdfs:label "Hub"@en .
+
+:PipingSpool a owl:Class ;
+    rdfs:subClassOf :PressureComponent ;
+    rdfs:label "Piping Spool"@en .
+
+:PowerMachine a owl:Class ;
+    rdfs:subClassOf :PressureComponent ;
+    rdfs:label "Power Machine"@en .
+
+:RotatingMachine a owl:Class ;
+    rdfs:subClassOf :PowerMachine ;
+    rdfs:label "Rotating Machine"@en .
 
 :Pump a owl:Class ;
-    rdfs:subClassOf :Equipment ;
+    rdfs:subClassOf :RotatingMachine ;
+    rdfs:label "Pump"@en ;
     dcterms:identifier "asset_pump" ;
     skos:prefLabel "Pump"@en ;
     skos:altLabel "Fluid Pump"@en ;
     skos:definition "Mechanical device that moves fluids through pipes by mechanical action."@en ;
     :ifc_equivalentClass "IfcPump" .
 
-:Tank a owl:Class ;
-    rdfs:subClassOf :Equipment ;
-    dcterms:identifier "asset_tank" ;
-    skos:prefLabel "Tank"@en ;
-    skos:altLabel "Storage Vessel"@en ;
-    skos:definition "Container for storing liquids or gases at atmospheric or pressurized conditions."@en ;
-    :ifc_equivalentClass "IfcTank" ;
-    :ifc_objectType "Tank" ;
-    :ifc_predefinedType "USERDEFINED" .
+:Vessel a owl:Class ;
+    rdfs:subClassOf :PressureComponent ;
+    rdfs:label "Vessel"@en .
 
-:Pipe a owl:Class ;
-    rdfs:subClassOf :TransportElement ;
-    dcterms:identifier "asset_pipe" ;
-    skos:prefLabel "Pipe"@en ;
-    skos:altLabel "Pipeline"@en ;
-    skos:altLabel "Tubulação"@pt-br ;
-    skos:definition "Cylindrical conduit that transports fluids between system components."@en ;
-    :ifc_equivalentClass "IfcPipeSegment" .
+:SeparatorVessel a owl:Class ;
+    rdfs:subClassOf :Vessel ;
+    rdfs:label "Separator Vessel"@en .
+
+:Valve a owl:Class ;
+    rdfs:subClassOf :PressureComponent ;
+    rdfs:label "Valve"@en .
+
+:ActuatedValve a owl:Class ;
+    rdfs:subClassOf :Valve ;
+    rdfs:label "Actuated Valve"@en .
+
+:BlockValve a owl:Class ;
+    rdfs:subClassOf :ActuatedValve ;
+    rdfs:label "Block Valve"@en .
+
+:ChokeValve a owl:Class ;
+    rdfs:subClassOf :ActuatedValve ;
+    rdfs:label "Choke Valve"@en .
+
+:CheckValve a owl:Class ;
+    rdfs:subClassOf :Valve ;
+    rdfs:label "Check Valve"@en .
+
+:ReliefValve a owl:Class ;
+    rdfs:subClassOf :CheckValve ;
+    rdfs:label "Relief Valve"@en .
+
+:LPHousing a owl:Class ;
+    rdfs:subClassOf :PressureComponent ;
+    rdfs:label "LP Housing"@en .
+
+:HPHousing a owl:Class ;
+    rdfs:subClassOf :PressureComponent ;
+    rdfs:label "HP Housing"@en .
+
+:CasingHanger a owl:Class ;
+    rdfs:subClassOf :PressureComponent ;
+    rdfs:label "Casing Hanger"@en .
+
+:TubingHanger a owl:Class ;
+    rdfs:subClassOf :PressureComponent ;
+    rdfs:label "Tubing Hanger"@en .
+
+:ElectronicDevice a owl:Class ;
+    rdfs:subClassOf :ComponentDevice ;
+    rdfs:label "Electronic Device"@en .
+
+:SEM a owl:Class ;
+    rdfs:subClassOf :ElectronicDevice ;
+    rdfs:label "SEM"@en .
+
+:IMUX a owl:Class ;
+    rdfs:subClassOf :ElectronicDevice ;
+    rdfs:label "IMUX"@en .
+
+:Sensor a owl:Class ;
+    rdfs:subClassOf :ElectronicDevice ;
+    rdfs:label "Sensor"@en .
+
+:PressureSensor a owl:Class ;
+    rdfs:subClassOf :Sensor ;
+    rdfs:label "Pressure Sensor"@en .
+
+:SandDetector a owl:Class ;
+    rdfs:subClassOf :Sensor ;
+    rdfs:label "Sand Detector"@en .
+
+:TemperatureSensor a owl:Class ;
+    rdfs:subClassOf :Sensor ;
+    rdfs:label "Temperature Sensor"@en .
+
+:TPT a owl:Class ;
+    rdfs:subClassOf :Sensor ;
+    rdfs:label "TPT"@en .
+
+:SpliceBox a owl:Class ;
+    rdfs:subClassOf :ElectronicDevice ;
+    rdfs:label "Splice Box"@en .
+
+:LineTermination a owl:Class ;
+    rdfs:subClassOf :ElectronicDevice ;
+    rdfs:label "Line Termination"@en .
+
+:PipeTermination a owl:Class ;
+    rdfs:subClassOf :LineTermination ;
+    rdfs:label "Pipe Termination"@en .
+
+:EndFitting a owl:Class ;
+    rdfs:subClassOf :PipeTermination ;
+    rdfs:label "End Fitting"@en .
+
+:FlexibleJoint a owl:Class ;
+    rdfs:subClassOf :PipeTermination ;
+    rdfs:label "Flexible Joint"@en .
+
+:ArmorPot a owl:Class ;
+    rdfs:subClassOf :LineTermination ;
+    rdfs:label "Armor Pot"@en .
+
+:SubseaFlexiblePipeAncillary a owl:Class ; # Renomeado de LineAccessory
+    rdfs:subClassOf :Component ;
+    rdfs:label "Subsea Flexible Pipe Ancillary"@en .
+
+:BendStiffener a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "Bend Stiffener"@en .
+
+:TopBendStiffener a owl:Class ;
+    rdfs:subClassOf :BendStiffener ;
+    rdfs:label "Top Bend Stiffener"@en .
+
+:IntermediateBendStiffener a owl:Class ;
+    rdfs:subClassOf :BendStiffener ;
+    rdfs:label "Intermediate Bend Stiffener"@en .
+
+:BendRestrictor a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "Bend Restrictor"@en .
+
+:BuoyancyModule a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "Buoyancy Module"@en .
+
+:SplitCollar a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "Split Collar"@en .
+
+:HandlingCollar a owl:Class ;
+    rdfs:subClassOf :SplitCollar ;
+    rdfs:label "Handling Collar"@en .
+
+:AnchoringCollar a owl:Class ;
+    rdfs:subClassOf :SplitCollar ;
+    rdfs:label "Anchoring Collar"@en .
+
+:DeadweightCollar a owl:Class ;
+    rdfs:subClassOf :SplitCollar ;
+    rdfs:label "Deadweight Collar"@en .
+
+:AnodeCollar a owl:Class ;
+    rdfs:subClassOf :SplitCollar ;
+    rdfs:label "Anode Collar"@en .
+
+:StoppingCollar a owl:Class ;
+    rdfs:subClassOf :SplitCollar ;
+    rdfs:label "Stopping Collar"@en .
+
+:HangOffCollar a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "Hang-Off Collar"@en .
+
+:PullingHead a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "Pulling Head"@en .
+
+:PullInCollar a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "Pull-In Collar"@en .
+
+:AbrasionProtector a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "Abrasion Protector"@en .
+
+:VIVStrake a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "VIV Strake"@en .
+
+:OverboardingCollar a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "Overboarding Collar"@en .
+
+:ElevationCollar a owl:Class ;
+    rdfs:subClassOf :SubseaFlexiblePipeAncillary ;
+    rdfs:label "Elevation Collar"@en .
+
+:Structure a owl:Class ;
+    rdfs:subClassOf :CompactObject ;
+    rdfs:label "Structure"@en .
+
+:AnodeSled a owl:Class ;
+    rdfs:subClassOf :Structure ;
+    rdfs:label "Anode Sled"@en .
+
+:Anchor a owl:Class ;
+    rdfs:subClassOf :Structure ;
+    rdfs:label "Anchor"@en .
+
+:DragAnchor a owl:Class ;
+    rdfs:subClassOf :Anchor ;
+    rdfs:label "Drag Anchor"@en .
+
+:Pile a owl:Class ;
+    rdfs:subClassOf :Anchor ;
+    rdfs:label "Pile"@en .
+
+:TorpedoPile a owl:Class ;
+    rdfs:subClassOf :Pile ;
+    rdfs:label "Torpedo Pile"@en .
+
+:SuctionPile a owl:Class ;
+    rdfs:subClassOf :Pile ;
+    rdfs:label "Suction Pile"@en .
+
+:Wellhead a owl:Class ;
+    rdfs:subClassOf :Structure ;
+    rdfs:label "Wellhead"@en .
+
+:GuideBase a owl:Class ;
+    rdfs:subClassOf :Structure ;
+    rdfs:label "Guide Base"@en .
+
+# Equipment Branch (as per your new tree structure)
+:Equipment a owl:Class ;
+    rdfs:subClassOf :CompactObject ; # Moved under CompactObject
+    rdfs:label "Equipment"@en .
+
+:SubseaEquipment a owl:Class ;
+    rdfs:subClassOf :Equipment ;
+    rdfs:label "Subsea Equipment"@en .
+
+:ActuatedEquipment a owl:Class ;
+    rdfs:subClassOf :SubseaEquipment ;
+    rdfs:label "Actuated Equipment"@en .
+
+:PressureEquipment a owl:Class ;
+    rdfs:subClassOf :ActuatedEquipment ;
+    rdfs:label "Pressure Equipment"@en .
+
+:BOP a owl:Class ;
+    rdfs:subClassOf :PressureEquipment ;
+    rdfs:label "BOP"@en .
+
+:FlowControlEquipment a owl:Class ;
+    rdfs:subClassOf :PressureEquipment ;
+    rdfs:label "Flow Control Equipment"@en .
+
+:FlowControlModule a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "Flow Control Module"@en .
+
+:HubBlockCap a owl:Class ;
+    rdfs:subClassOf :FlowControlModule ;
+    rdfs:label "Hub Block Cap"@en .
+
+:ChokeModule a owl:Class ;
+    rdfs:subClassOf :FlowControlModule ;
+    rdfs:label "Choke Module"@en .
+
+:CrossoverModule a owl:Class ;
+    rdfs:subClassOf :FlowControlModule ;
+    rdfs:label "Crossover Module"@en .
+
+:ProcessingModule a owl:Class ;
+    rdfs:subClassOf :FlowControlModule ;
+    rdfs:label "Processing Module"@en .
+
+:PumpingModule a owl:Class ;
+    rdfs:subClassOf :ProcessingModule ;
+    rdfs:label "Pumping Module"@en .
+
+:TieInEquipment a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "Tie-In Equipment"@en .
+
+:LineTerminationModule a owl:Class ;
+    rdfs:subClassOf :TieInEquipment ;
+    rdfs:label "Line Termination Module"@en .
+
+:ConnectionModule a owl:Class ;
+    rdfs:subClassOf :LineTerminationModule ;
+    rdfs:label "Connection Module"@en .
+
+:VCM a owl:Class ;
+    rdfs:subClassOf :ConnectionModule ;
+    rdfs:label "VCM"@en .
+
+:HCM a owl:Class ;
+    rdfs:subClassOf :ConnectionModule ;
+    rdfs:label "HCM"@en .
+
+:UTM a owl:Class ;
+    rdfs:subClassOf :LineTerminationModule ;
+    rdfs:label "UTM"@en .
+
+:FlowLineMandrel a owl:Class ;
+    rdfs:subClassOf :TieInEquipment ;
+    rdfs:label "Flow Line Mandrel"@en .
+
+:RigidJumper a owl:Class ;
+    rdfs:subClassOf :TieInEquipment ;
+    rdfs:label "Rigid Jumper"@en .
+
+:TreeCap a owl:Class ;
+    rdfs:subClassOf :TieInEquipment ;
+    rdfs:label "Tree Cap"@en .
+
+:FSHRUpperAssembly a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "FSHR Upper Assembly"@en .
+
+:FSHRLowerAssembly a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "FSHR Lower Assembly"@en .
+
+:InlineT a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "Inline T"@en .
+
+:InlineY a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "Inline Y"@en .
+
+:InlineValve a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "Inline Valve"@en .
+
+:PLET a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "PLET"@en .
+
+:Manifold a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "Manifold"@en .
+
+:PLEM a owl:Class ;
+    rdfs:subClassOf :Manifold ;
+    rdfs:label "PLEM"@en .
+
+:ProcessingEquipment a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "Processing Equipment"@en .
+
+:PumpingStation a owl:Class ;
+    rdfs:subClassOf :ProcessingEquipment ;
+    rdfs:label "Pumping Station"@en .
+
+:SeparatorStation a owl:Class ;
+    rdfs:subClassOf :ProcessingEquipment ;
+    rdfs:label "Separator Station"@en .
+
+:WetChristmasTree a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "Wet Christmas Tree"@en .
+
+:Flowbase a owl:Class ;
+    rdfs:subClassOf :FlowControlEquipment ;
+    rdfs:label "Flowbase"@en .
+
+:RunningTool a owl:Class ;
+    rdfs:subClassOf :SubseaEquipment ;
+    rdfs:label "Running Tool"@en .
+
+:QuickDisconnectionTool a owl:Class ;
+    rdfs:subClassOf :RunningTool ;
+    rdfs:label "Quick Disconnection Tool"@en .
+
+:TreeRunningTool a owl:Class ;
+    rdfs:subClassOf :RunningTool ;
+    rdfs:label "Tree Running Tool"@en .
+
+:FlowbaseRunningTool a owl:Class ;
+    rdfs:subClassOf :RunningTool ;
+    rdfs:label "Flowbase Running Tool"@en .
+
+:ShearableRiserJoint a owl:Class ;
+    rdfs:subClassOf :RunningTool ;
+    rdfs:label "Shearable Riser Joint"@en .
+
+:TubingHangerRunningTool a owl:Class ;
+    rdfs:subClassOf :RunningTool ;
+    rdfs:label "Tubing Hanger Running Tool"@en .
+
+:WearBushingRunningTool a owl:Class ;
+    rdfs:subClassOf :RunningTool ;
+    rdfs:label "Wear Bushing Running Tool"@en .
+
+:SCMRunningTool a owl:Class ;
+    rdfs:subClassOf :RunningTool ;
+    rdfs:label "SCM Running Tool"@en .
+
+:BuoyancyTank a owl:Class ;
+    rdfs:subClassOf :SubseaEquipment ;
+    rdfs:label "Buoyancy Tank"@en .
+
+:RiserSupportBuoy a owl:Class ;
+    rdfs:subClassOf :BuoyancyTank ;
+    rdfs:label "Riser Support Buoy"@en .
+
+:AuxiliaryModule a owl:Class ;
+    rdfs:subClassOf :SubseaEquipment ;
+    rdfs:label "Auxiliary Module"@en .
+
+:LogicCap a owl:Class ;
+    rdfs:subClassOf :AuxiliaryModule ;
+    rdfs:label "Logic Cap"@en .
+
+:RoboticActuator a owl:Class ;
+    rdfs:subClassOf :AuxiliaryModule ;
+    rdfs:label "Robotic Actuator"@en .
+
+:SCM a owl:Class ;
+    rdfs:subClassOf :AuxiliaryModule ;
+    rdfs:label "SCM"@en .
+
+:SCMMB a owl:Class ;
+    rdfs:subClassOf :AuxiliaryModule ;
+    rdfs:label "SCMMB"@en .
+
+:DistributionModule a owl:Class ;
+    rdfs:subClassOf :AuxiliaryModule ;
+    rdfs:label "Distribution Module"@en .
+
+:SDU a owl:Class ;
+    rdfs:subClassOf :SubseaEquipment ;
+    rdfs:label "SDU"@en .
+
+:UTA a owl:Class ;
+    rdfs:subClassOf :SubseaEquipment ;
+    rdfs:label "UTA"@en .
+
+:WaterIntake a owl:Class ;
+    rdfs:subClassOf :SubseaEquipment ;
+    rdfs:label "Water Intake"@en .
+
+:SurfaceEquipment a owl:Class ;
+    rdfs:subClassOf :Equipment ;
+    rdfs:label "Surface Equipment"@en .
+
+:TopsideEquipment a owl:Class ;
+    rdfs:subClassOf :SurfaceEquipment ;
+    rdfs:label "Topside Equipment"@en .
+
+:MasterControlStation a owl:Class ;
+    rdfs:subClassOf :TopsideEquipment ;
+    rdfs:label "Master Control Station"@en .
+
+:HydraulicPowerUnit a owl:Class ;
+    rdfs:subClassOf :TopsideEquipment ;
+    rdfs:label "Hydraulic Power Unit"@en .
+
+:ChemicalInjectionUnit a owl:Class ;
+    rdfs:subClassOf :TopsideEquipment ;
+    rdfs:label "Chemical Injection Unit"@en .
+
+:TestEquipment a owl:Class ;
+    rdfs:subClassOf :SurfaceEquipment ;
+    rdfs:label "Test Equipment"@en .
+
+:TestBase a owl:Class ;
+    rdfs:subClassOf :TestEquipment ;
+    rdfs:label "Test Base"@en .
+
+# LinearObject Branch
+:LinearObject a owl:Class ;
+    rdfs:subClassOf :Asset ;
+    rdfs:label "Linear Object"@en .
+
+:Jumper a owl:Class ;
+    rdfs:subClassOf :LinearObject ;
+    rdfs:label "Jumper"@en .
+
+:ElectricalPowerJumper a owl:Class ;
+    rdfs:subClassOf :Jumper ;
+    rdfs:label "Electrical Power Jumper"@en .
+
+:ElectricalJumper a owl:Class ;
+    rdfs:subClassOf :Jumper ;
+    rdfs:label "Electrical Jumper"@en .
+
+:HydraulicJumper a owl:Class ;
+    rdfs:subClassOf :Jumper ;
+    rdfs:label "Hydraulic Jumper"@en .
+
+:FiberOpticJumper a owl:Class ;
+    rdfs:subClassOf :Jumper ;
+    rdfs:label "Fiber Optic Jumper"@en .
+
+:TransportLineSegment a owl:Class ;
+    rdfs:subClassOf :LinearObject ;
+    rdfs:label "Transport Line Segment"@en .
+
+:PipeSegment a owl:Class ;
+    rdfs:subClassOf :TransportLineSegment ;
+    rdfs:label "Pipe Segment"@en .
+
+:FlexiblePipeSegment a owl:Class ;
+    rdfs:subClassOf :PipeSegment ;
+    rdfs:label "Flexible Pipe Segment"@en .
+
+:RigidPipeSegment a owl:Class ;
+    rdfs:subClassOf :PipeSegment ;
+    rdfs:label "Rigid Pipe Segment"@en .
+
+:UmbilicalSegment a owl:Class ;
+    rdfs:subClassOf :TransportLineSegment ;
+    rdfs:label "Umbilical Segment"@en .
+
+:MooringLineSegment a owl:Class ;
+    rdfs:subClassOf :LinearObject ;
+    rdfs:label "Mooring Line Segment"@en .
+
+:ChainSegment a owl:Class ;
+    rdfs:subClassOf :MooringLineSegment ;
+    rdfs:label "Chain Segment"@en .
+
+:RopeSegment a owl:Class ;
+    rdfs:subClassOf :MooringLineSegment ;
+    rdfs:label "Rope Segment"@en .
+
+:WireRopeSegment a owl:Class ;
+    rdfs:subClassOf :RopeSegment ;
+    rdfs:label "Wire Rope Segment"@en .
+
+:FiberRopeSegment a owl:Class ;
+    rdfs:subClassOf :RopeSegment ;
+    rdfs:label "Fiber Rope Segment"@en .
